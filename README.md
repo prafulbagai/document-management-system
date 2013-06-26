@@ -32,7 +32,7 @@ Various fields are :-
 
 Steps to configure the project
 ==============================
-1)	Download the project. Open the command prompt and change it to the directory of the project downloaded.
+1)	Download the project (git clone https://github.com/prafulbagai/document-management-system.git). Open the command prompt and change it to the directory of the project downloaded.
 
 2)	Run the following the command. python manage.py runserver
 
