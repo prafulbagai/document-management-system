@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+        
+        {% block css %} <link rel="stylesheet" type="text/css" href="/static/css/main.css">{% endblock %}
+        {% block top %}<br>{% endblock %}
+        {% block heading%}Document Management System<br> 
+        {%endblock%}
+        
+        
+        
+        {% block left%}
+               
+        <h3>Welcome {{user }} </h3>
+        
+         
+        <form action="{% url 'list' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload Document" /></p>
+        </form>
+        {% endblock %}   
+    {% block content %}
+    
+    <br>
+    <!-- List of uploaded documents -->
+    {% if user.is_authenticated %}
+    
+    <h3>Your Documents</h3>
+        
+        
+      {%if documents  %}
+        
+        <table cellpadding=20 bgcolor=#eee>
+        <tr bgcolor="#eee"><h3>
+        	<td bgcolor="#eee"><b>Title</b></td>
+        	<td bgcolor="#eee">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Owner</b></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	</h3>
+        </tr>
+        {% for document in documents %}
+            <tr>
+            	<td bgcolor="#eee"><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a> </td>
+            	
+            	<td bgcolor="#eee" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user}}</td>
+            	
+            	
+            	
+            </tr>
+        {% endfor %}
+        </table>
+        
+      {% else %}
+        <p>No documents.</p>
+      {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+        
+     {% else %}
+        <a href="{% url 'login' %}"> Login First</a>
+        
+     {% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+
+{% block css %} 
+
+<link rel="stylesheet" type="text/css" href="/static/css/RegisterLogin.css">
+{% endblock %}
+{%block top %} <br> <br>{% endblock %}
+{% block heading%}Document Management System<br> {% endblock %}
+{% block content %}
+
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    
+       
+	<div id="login_form"><br>
+	<br>LOGIN:<br><br>
+	
+    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.username }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+       </table>
+       
+<br>
+       <input type="submit" value="login" /><br><br><br>
+       <input type="hidden" name="next" value="{{ '../list' }}" />
+   </form>
+</div>
+<div id= "intro"><h2>DMS</h2><br>
+ 
+Welcome to Document Management System!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<ul>
+<li>Access everywhere</li><br>
+<li>Store files safely</li><br>
+<li>Store Unlimited</li>
+</ul>
+<br><br>
+</div>
+
+<div id="register_form">
+ To <b>Register</b> <a href="{% url 'register' %}"> Click Here</a>  <br>
+ 
+ </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+@CHARSET "ISO-8859-1";
+#register{
+	text-align: left;
+	top: 200px;
+	position: fixed;
+	left: 700px;
+	padding:5px;
+	margin:0px;
+	height: 300px;
+	background-color:#eee;	
+}
+#login_form{
+	text-align: left;
+	top: 240px;
+	position: fixed;
+	left: 900px;
+	padding:10px;
+	margin:0px;
+	height: 250px;
+	background-color:#eee;
+	
+}
+
+#heading{
+	text-align: center;
+	background-color:#eee;
+	font-size:3em;  
+}
+
+#register_form{
+	text-align: left;
+	font-size:2em;
+	top: 170px;
+	position: fixed;
+	background-color:#eee;
+	left: 900px;
+	padding:10px;
+	margin:0px;
+	
+}
+
+#intro{
+	text-align: left;
+	
+	top: 200px;
+	position: fixed;
+	background-color:#eee;
+	left: 250px;
+	padding:10px;
+	margin:0px;
+	height: 300px;
+}

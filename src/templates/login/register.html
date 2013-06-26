@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block css %} 
+
+<link rel="stylesheet" type="text/css" href="/static/css/RegisterLogin.css">
+{% endblock %}
+{%block top %} <br> <br>{% endblock %}
+{% block heading %}Document Management System<br> {% endblock %}
+{% block content %}
+<br><br>
+
+<form action="." method="POST" id='register'>
+<h3>Register</h3>
+   {% csrf_token %}
+   {{ form.as_p }}
+   <input type ="submit" value= "Register">
+</form>
+
+<div id= "intro"><h2>DMS</h2><br>
+ 
+Welcome to Document Management System!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<ul>
+<li>Access everywhere</li><br>
+<li>Store files safely</li><br>
+<li>Store Unlimited</li>
+</ul>
+<br><br>
+</div>
+
+{% endblock %}
+
